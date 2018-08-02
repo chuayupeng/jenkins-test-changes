@@ -10,6 +10,7 @@ for char in totalInput:
         formalInput.append(line)
         line = ""
 newFile = False
+tracked = False
 addedFiles = []
 modifiedFiles = []
 deletedFiles = []
@@ -17,9 +18,9 @@ for lines in formalInput:
     if lines[0:10] == "diff --git":
         fileName = lines.split(' b/')[1]
         newFile = True
+        tracked = False
     else:
         newFile = False
-    tracked = False
     if not newFile:
        if lines == "+++ /dev/null": #deleted
            deletedFiles.append(fileName)
